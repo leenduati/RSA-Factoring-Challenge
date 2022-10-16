@@ -1,0 +1,36 @@
+#!/usr/bin/python3
+import sys
+
+"""
+ This is a python script that decodes RSA
+"""
+
+
+def check_prime_numbers(x):
+    prime_list = [2, 3, 5, 7]
+    num = 2
+    res = []
+
+    while num < x:
+        if x % num != 0:
+            res.append(num)
+        else:
+            print("{}={}*{}".format(x, int(x/num), num))
+            break
+        num = num + 1
+    # print("haha")
+
+
+def open_file():
+
+    fin = 0
+    with open(sys.argv[1], 'r') as myfile:
+        for line in myfile:
+            fin = check_prime_numbers(int(line))
+            if fin is None:
+                pass
+            else:
+                print(fin)
+
+
+open_file()
