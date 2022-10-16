@@ -24,7 +24,6 @@ def main_func(x):
 
 def open_file():
 
-    fin = 0
 
     if sys.argv[1] is None or len(sys.argv) > 2:
         sys.exit()
@@ -33,11 +32,8 @@ def open_file():
             if line == "" or int(line) < 2:
                 sys.exit()
             line = line.split('\n')[0]
-            fin = main_func(int(line))
-            if fin is None:
-                pass
-            else:
-                print(fin)
+            while main_func(int(line)):
+                print(main_func(int(line)))
     myfile.close()
 
 
