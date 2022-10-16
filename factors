@@ -15,11 +15,9 @@ def main_func(x):
         if x % num != 0:
             pass
         else:
-            print("{}={}*{}".format(x, int(x/num), num))
+            print("{:.0f}={:.0f}*{:.0f}".format(x, x/num, num))
             break
         num = num + 1
-        if num > 100000:
-            x = x // 1024
 
     # print("haha")
 
@@ -28,10 +26,12 @@ def open_file():
 
     fin = 0
 
-    if sys.argv[1] is None:
+    if sys.argv[1] is None or len(sys.argv) > 2:
         sys.exit()
     with open(sys.argv[1], 'r') as myfile:
         for line in myfile:
+            if line == "" or int(line) < 1:
+                sys.exit()
             fin = main_func(int(line))
             if fin is None:
                 pass
